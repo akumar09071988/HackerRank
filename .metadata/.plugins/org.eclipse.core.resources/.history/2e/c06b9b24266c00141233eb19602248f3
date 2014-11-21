@@ -1,0 +1,58 @@
+import java.util.Scanner;
+
+
+public class Main {
+	
+	static String operation1 ="Qb";
+	static String operation2 ="Qr";
+	static String operation3 ="Qi";
+	int timesChange          = 0;
+	
+	
+	public void executeOperations(String input,int node1,int node2)
+	{
+		if(input.equalsIgnoreCase(operation3))
+		{
+			
+		}
+		else
+		{
+			
+		}
+	}
+	
+	
+	
+	
+	public static void main(String[] args)
+	{
+	   Main obj = new Main();
+	   try
+	   {
+		   Scanner in = new Scanner(System.in);
+		   int numOperations =Integer.parseInt(in.nextLine());
+	       for(int i=0;i<numOperations;i++)
+	       {
+	    	   String input       = in.nextLine();
+	    	   System.out.println(input);
+	    	   String opeationStr = input.split(" ")[0];
+	           int node1          =  0;
+	           int node2          =  0;
+	    	   if(!opeationStr.equalsIgnoreCase(operation3))
+	    	   {
+	    		   node1         = Integer.parseInt(input.split(" ")[1]);
+		   		   node2         = Integer.parseInt(input.split(" ")[2]);
+		   	          
+	    	   }
+	    	   obj.executeOperations(input,node1,node2);
+	   		      	   
+	       }
+	   }
+	   catch(Exception e)
+	   {
+		   e.printStackTrace();
+	   }
+
+	}
+
+}

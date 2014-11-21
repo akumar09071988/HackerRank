@@ -1,0 +1,50 @@
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Scanner;
+
+
+public class Solution {
+	
+	class numToys implements Comparator<numToys>
+	{
+		int toysNo=0;
+		int weight=0;
+		@Override
+		public int compare(numToys arg0, numToys arg1) {
+			if(arg0.toysNo<=arg1.toysNo)
+			{
+				return -1;
+			}
+			return 1;
+		}
+	}
+
+	public static void main(String[] args)
+	{
+		Solution obj = new Solution();
+		
+		try
+		{
+			Scanner in = new Scanner(System.in);
+			int numWeights =Integer.parseInt(in.nextLine());
+			int[] weights = new int[numWeights];
+			for(int i=0;i<numWeights;i++)
+			{
+			  weights[i] = in.nextInt();
+			}
+			
+			Arrays.sort(weights);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void insertIntoPQ(int[] weights)
+	{
+		
+	}
+
+}

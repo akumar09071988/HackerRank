@@ -1,0 +1,61 @@
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.Scanner;
+
+
+public class Solution {
+	
+	class numToys implements Comparable<numToys>
+	{
+		int toysNo=0;
+		int weight=0;
+		@Override
+		public int compareTo(numToys arg0) {
+			if(toysNo>arg0.toysNo)
+			{
+				return -1;
+			}
+			return 1;
+		}
+	
+	}
+
+	public static void main(String[] args)
+	{
+		Solution obj = new Solution();
+		
+		try
+		{
+			Scanner in = new Scanner(System.in);
+			int numWeights =Integer.parseInt(in.nextLine());
+			int[] weights = new int[numWeights];
+			for(int i=0;i<numWeights;i++)
+			{
+			  weights[i] = in.nextInt();
+			}
+			
+			Arrays.sort(weights);
+			obj.insertIntoPQ(weights);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void insertIntoPQ(int[] weights)
+	{
+		PriorityQueue<numToys> pq = new PriorityQueue<Solution.numToys>();
+		for(int i=0;i<3;i++)
+		{
+			numToys vo = new numToys();
+			vo.toysNo=i;
+			vo.weight=i+1;
+			pq.add(vo);
+		}
+		System.out.println(pq.peek().toysNo);
+	}
+
+}

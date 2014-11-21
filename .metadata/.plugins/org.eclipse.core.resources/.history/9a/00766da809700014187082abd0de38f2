@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+
+public class Solution {
+	
+	
+
+	public static void main(String[] args) {
+	   Solution obj = new Solution();
+	   try
+	   {
+		   
+		   Scanner in = new Scanner(System.in);
+		   int numBuildings = Integer.parseInt(in.nextLine());
+		   int [] buildingsHeightArr = new int[numBuildings];
+		   for(int i=0;i<numBuildings;i++)
+		   {
+			   buildingsHeightArr[i] = in.nextInt();
+			   System.out.println(buildingsHeightArr[i]);
+		   }
+	   }
+	   catch(Exception e)
+	   {
+		   e.printStackTrace();
+	   }
+
+	}
+
+}

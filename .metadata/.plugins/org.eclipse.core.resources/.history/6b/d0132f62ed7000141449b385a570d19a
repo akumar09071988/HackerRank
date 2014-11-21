@@ -1,0 +1,61 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class Solution {
+	
+	class Nodes
+	{
+		ArrayList<Integer> adjList = new ArrayList<Integer>();
+		int nodeNum =0;
+		int a;
+		int b;
+		
+	}
+	
+	
+	
+	int numNodes= 0;
+	Nodes [] nodeArray ;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Solution obj = new Solution();
+		try
+		{
+			Scanner in = new Scanner(System.in);
+			obj.numNodes = Integer.parseInt(in.nextLine());
+			obj.nodeArray = new Nodes[obj.numNodes+1];
+			for(int i=0;i<obj.numNodes;i++)
+			{
+				Nodes node = obj .new Nodes();
+				node.nodeNum=i+1;
+				node.a = in.nextInt();
+				node.b = in .nextInt();
+				System.out.println(node.nodeNum+" "+node.a+" "+node.b);
+				obj.nodeArray[i+1]=node;
+			}
+			
+			for(int i=0;i<obj.numNodes-1;i++)
+			{
+				int node1 = in.nextInt();
+				int node2 = in.nextInt();
+				System.out.println(node1+" "+node2);
+				obj.nodeArray[node1].adjList.add(node2);
+				obj.nodeArray[node2].adjList.add(node1);
+			}
+			int numQueries = in.nextInt();
+			System.out.println(numQueries);
+			for(int i=0;i<numQueries;i++)
+			{
+				System.out.print(in.nextInt()+" - ");
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+
+	}
+
+}

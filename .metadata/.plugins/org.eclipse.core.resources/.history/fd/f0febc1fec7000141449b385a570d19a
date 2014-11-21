@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+
+public class Solution {
+	
+	int numNodes= 0;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Solution obj = new Solution();
+		try
+		{
+			Scanner in = new Scanner(System.in);
+			obj.numNodes = Integer.parseInt(in.nextLine());
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+
+	}
+
+}

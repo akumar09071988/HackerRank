@@ -1,0 +1,48 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+
+public class Solution {
+
+	public static void main(String[] args) 
+	{
+	  Solution obj = new Solution();
+	  try
+	  {
+		  Scanner in = new Scanner(System.in);
+		  int numCopies = Integer.parseInt(in.nextLine());
+		  ArrayList<Integer> list = new ArrayList<Integer>();
+		  for(int i=0;i<numCopies;i++)
+		  {
+			  int noNum = in.nextInt();
+			  for(int k=0;k<noNum;k++)
+			  {
+				  list.add(in.nextInt());
+			  }
+		  }
+		  
+		  Collections.sort(list);
+		  ArrayList<Integer> finalList = new ArrayList<Integer>();
+		  for(int i=0;i<list.size();i++)
+		  {
+			  if(i!=0)
+			  {
+				  if(list.get(i)!=list.get(i-1))
+				  {
+					  System.out.println(list.get(i)+" ");
+				  }
+			  }
+			  else
+			  {
+				  System.out.println(list.get(i)+" ");
+			  }
+		  }
+	  }
+      catch(Exception e)
+	  {
+    	  e.printStackTrace();
+	  }
+	}
+
+}

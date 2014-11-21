@@ -1,0 +1,142 @@
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.PriorityQueue;
+import java.util.Scanner;
+
+
+public class Solution {
+	
+	class numToys implements Comparable<numToys>
+	{
+		int toysNo=0;
+		int weight=0;
+		@Override
+		public int compareTo(numToys arg0) {
+			if(toysNo>arg0.toysNo)
+			{
+				return -1;
+			}
+			return 1;
+		}
+	
+	}
+
+	public static void main(String[] args)
+	{
+		Solution obj = new Solution();
+		
+		try
+		{
+			Scanner in = new Scanner(System.in);
+			int numWeights =Integer.parseInt(in.nextLine());
+			int[] weights = new int[numWeights];
+			for(int i=0;i<numWeights;i++)
+			{
+			  weights[i] = in.nextInt();
+			}
+			
+			Arrays.sort(weights);
+			/*for(int i=0;i<weights.length;i++)
+			{
+				System.out.print(weights[i]+" ");
+			}*/
+			System.out.println();
+			obj.insertIntoPQ(weights);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+
+	}
+	
+	public int getNumToys(int loc,int[]weights,int lastIndex)
+	{
+		for(int i=lastIndex;i<weights.length;i++)
+		{
+			if(weights[i]<=weights[loc]+4)
+			{
+				lastIndex++;
+			}
+			else
+			{
+				break;
+			}
+		}
+		return lastIndex;
+	}
+	
+	public void insertIntoPQ(int[] weights)
+	{
+		PriorityQueue<numToys> pq = new PriorityQueue<Solution.numToys>();
+		int lastIndex =1;
+	    for(int i=0;i<weights.length;i++)
+	    {
+	    	lastIndex= getNumToys(i, weights, lastIndex);
+	        int noToys = lastIndex-i;
+	        System.out.println(noToys);
+	        numToys vo = new numToys();
+	        vo.toysNo=noToys;
+	        vo.weight=weights[i];
+	        pq.add(vo);
+	    }
+	    countMin(pq, weights);
+		/*for(int i=0;i<3;i++)
+		{
+			numToys vo = new numToys();
+			vo.toysNo=i;
+			vo.weight=i+1;
+			pq.add(vo);
+		}
+		System.out.println(pq.peek().toysNo);*/
+	}
+	
+	public void countMin(PriorityQueue<numToys> pq,int[] weights)
+	{
+	   HashMap<Integer, Integer> doneWeight = new HashMap<Integer, Integer>();
+	   int numToys =0;
+	   int totalToys = weights.length;
+	   int cost =0;
+	   while((!pq.isEmpty()) && (numToys<totalToys))
+	   {
+		   System.out.println("in while loop");
+		   numToys vo = pq.poll();
+		   System.out.println("after pooll");
+		   if(!doneWeight.containsKey(vo.weight))
+		   {
+			   System.out.println("inside doesnot contain weight key");
+			   if(checkHashMap(vo.weight, doneWeight))
+			   {
+				   System.out.println("inside if checkhashmap countmin");
+				   doneWeight.put(vo.weight, vo.toysNo);
+				   numToys= numToys+vo.toysNo;
+				   cost =cost+1;
+				   System.out.println("after incrementing cost");
+			   }
+		   }
+	   }
+	   System.out.println("----------------- "+cost);
+	}
+	
+	public boolean checkHashMap(int weights,HashMap<Integer, Integer> doneWeight)
+	{
+		System.out.println("in func checkhashmap");
+		boolean contains =false;
+		int startWeight = weights-4;
+		while(startWeight <weights)
+		{
+			if(doneWeight.containsKey(startWeight))
+			{
+				contains=true;
+				break;
+			}
+			startWeight++;
+		}
+		
+		return contains;
+	}
+
+}
+
+  

@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class Solution {
+
+	public static void main(String[] args) 
+	{
+	  Solution obj = new Solution();
+	  try
+	  {
+		  Scanner in = new Scanner(System.in);
+		  int numCopies = Integer.parseInt(in.nextLine());
+		  ArrayList<Integer> list = new ArrayList<Integer>();
+		  for(int i=0;i<numCopies;i++)
+		  {
+			  int noNum = in.nextInt();
+			  for(int k=0;k<noNum;k++)
+			  {
+				  System.out.println(in.nextInt());
+			  }
+			  System.out.println("---------------------------------------");
+		  }
+	  }
+      catch(Exception e)
+	  {
+    	  e.printStackTrace();
+	  }
+	}
+
+}
